@@ -131,8 +131,6 @@ import java.util.List;
 @Requires(target = ActivityStarter.class, version = ActivityStarter.VERSION)
 public class VolumeDialogImpl implements VolumeDialog {
     private static final String TAG = Utils.logTag(VolumeDialogImpl.class);
-    public static final String ACTION_MEDIA_OUTPUT =
-            "com.android.settings.panel.action.MEDIA_OUTPUT";
 
     private static final long USER_ATTEMPT_GRACE_PERIOD = 1000;
     private static final int UPDATE_ANIMATION_DURATION = 80;
@@ -569,11 +567,7 @@ public class VolumeDialogImpl implements VolumeDialog {
     public void initSettingsH() {
         if (mMediaOutputIcon != null) {
             mMediaOutputIcon.setOnClickListener(v -> {
-                Events.writeEvent(mContext, Events.EVENT_SETTINGS_CLICK);
-                Intent intent = new Intent(ACTION_MEDIA_OUTPUT);
-                dismissH(DISMISS_REASON_SETTINGS_CLICKED);
-                PluginDependency.get(this, ActivityStarter.class).startActivity(intent,
-                        true /* dismissShade */);
+                Toast.makeText(mContext, "Never gonna give you up", Toast.LENGTH_SHORT).show();
             });
         }
         if (mExpandRowsView != null) {
